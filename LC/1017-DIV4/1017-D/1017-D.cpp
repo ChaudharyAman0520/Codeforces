@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string p,s;
+		cin>>p>>s;
+		size_t i=0,j=0,cnt1=0,cnt2=0;
+		bool flag=true;
+		while(i<p.size()&&j<s.size())
+		{
+			cnt1=0,cnt2=0;
+			if(p[i]=='L')
+			{
+				while(p[i]=='L'&&i<s.size())
+				{
+					cnt1++;
+					i++;
+				}
+				while(s[j]=='L'&&j<s.size())
+				{
+					j++;
+					cnt2++;
+				}
+			}
+			else 
+			{
+				while(p[i]=='R'&&i<p.size())
+				{
+					cnt1++;
+					i++;
+				}
+				while(s[j]=='R'&&j<s.size())
+				{
+					j++;
+					cnt2++;
+				}
+			}
+			if(cnt2>=cnt1&&cnt2<=2*cnt1)
+			{
+				continue;
+			}
+			else
+			{
+				flag=false;
+				break;
+			}
+		}
+		if(flag==true&&(i==p.size()&&j==s.size()))
+		{
+			cout<<"YES"<<endl;
+		}
+		else
+		{
+			cout<<"NO"<<endl;
+		}
+	}
+}
